@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\RedisCacheService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schema;
@@ -14,7 +15,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // 注册 Redis 缓存服务为单例：全应用共享同一 Redis 连接与配置实例
+        // 使用方式：依赖注入（构造函数参数类型提示 RedisCacheService）
+        //           或服务容器（app(RedisCacheService::class)）
+        $this->app->singleton(RedisCacheService::class);
     }
 
     /**
