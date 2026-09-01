@@ -79,9 +79,9 @@ return [
         // ----- database：数据库缓存 -----
         // 将缓存数据存储到指定的数据库表中，无需额外服务，部署简单。
         'database' => [
-            'driver' => 'database',                                   // 驱动类型：数据库
+            'driver' => 'database',                                         // 驱动类型：数据库
             'connection' => env('DB_CACHE_CONNECTION'),                // 使用的数据库连接名；为空时使用默认数据库连接
-            'table' => env('DB_CACHE_TABLE', 'cache'),                 // 存放缓存数据的表名，默认 'cache'
+            'table' => env('DB_CACHE_TABLE', 'cache'),          // 存放缓存数据的表名，默认 'cache'
             'lock_connection' => env('DB_CACHE_LOCK_CONNECTION'),      // 原子锁所用的数据库连接；为空时复用主连接
             'lock_table' => env('DB_CACHE_LOCK_TABLE'),                // 原子锁所用的表名；为空时使用默认锁表
         ],
@@ -89,9 +89,9 @@ return [
         // ----- file：文件系统缓存 -----
         // 将缓存写入本地文件，无需额外服务，适合单机部署。
         'file' => [
-            'driver' => 'file',                                                // 驱动类型：文件系统
-            'path' => storage_path('framework/cache/data'),                    // 缓存文件存放目录（绝对路径）
-            'lock_path' => storage_path('framework/cache/data'),               // 原子锁文件存放目录；默认与缓存目录相同
+            'driver' => 'file',                                             // 驱动类型：文件系统
+            'path' => storage_path('framework/cache/data'),            // 缓存文件存放目录（绝对路径）
+            'lock_path' => storage_path('framework/cache/data'),       // 原子锁文件存放目录；默认与缓存目录相同
         ],
 
         // ----- storage：基于文件系统磁盘（Filesystem Disk）的缓存 -----
