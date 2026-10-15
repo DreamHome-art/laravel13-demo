@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\BloomFilterService;
+use App\Services\RedisCacheService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schema;
@@ -14,7 +16,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // 注册 Redis 缓存服务为单例：全应用共享同一 Redis 连接与配置实例
+        // 使用方式：依赖注入（构造函数参数类型提示 RedisCacheService）
+        //           或服务容器（app(RedisCacheService::class)）
+        $this->app->singleton(RedisCacheService::class);
+
+        // 注册布隆过滤器服务为单例：全应用共享同一 Redis 连接与过滤器配置
+        // 使用方式：依赖注入（构造函数参数类型提示 BloomFilterService）
+        //           或服务容器（app(BloomFilterService::class)）
+        // 如需多实例（不同过滤器名），可通过 bind + 工厂闭包覆盖，或显式 new 传参
+        $this->app->singleton(BloomFilterService::class);
     }
 
     /**

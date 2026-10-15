@@ -210,10 +210,10 @@ return [
         // ----- default：默认 Redis 连接 -----
         // 通用 Redis 连接，供未明确指定连接的 Redis 操作使用。
         'default' => [
-            'url' => env('REDIS_URL'),                                // Redis 连接 URL（如 redis://user:pass@host:port/db）；优先级高于下列独立字段
-            'host' => env('REDIS_HOST', '127.0.0.1'),                 // Redis 主机地址；默认本机
-            'username' => env('REDIS_USERNAME'),                       // 登录用户名；Redis 6+ 支持账户系统；为空时匿名登录
-            'password' => env('REDIS_PASSWORD'),                       // 登录密码；为空表示无密码
+            'url' => env('REDIS_URL'),                                        // Redis 连接 URL（如 redis://user:pass@host:port/db）；优先级高于下列独立字段
+            'host' => env('REDIS_HOST', '127.0.0.1'),                  // Redis 主机地址；默认本机
+            'username' => env('REDIS_USERNAME'),                              // 登录用户名；Redis 6+ 支持账户系统；为空时匿名登录
+            'password' => env('REDIS_PASSWORD'),                              // 登录密码；为空表示无密码
             'port' => env('REDIS_PORT', '6379'),                       // 端口号；默认 6379
             'database' => env('REDIS_DB', '0'),                        // 使用的 Redis 数据库编号（0~15）；默认 0
             'max_retries' => env('REDIS_MAX_RETRIES', 3),              // 命令失败时的最大重试次数；默认 3
@@ -225,10 +225,10 @@ return [
         // ----- cache：缓存专用 Redis 连接 -----
         // 用于 cache.php 中 redis 驱动所引用的连接，与默认连接区分以隔离数据。
         'cache' => [
-            'url' => env('REDIS_URL'),                                // Redis 连接 URL；优先级高于下列独立字段
-            'host' => env('REDIS_HOST', '127.0.0.1'),                 // Redis 主机地址；默认本机
-            'username' => env('REDIS_USERNAME'),                       // 登录用户名；Redis 6+ 支持账户系统
-            'password' => env('REDIS_PASSWORD'),                       // 登录密码；为空表示无密码
+            'url' => env('REDIS_URL'),                                        // Redis 连接 URL；优先级高于下列独立字段
+            'host' => env('REDIS_HOST', '127.0.0.1'),                  // Redis 主机地址；默认本机
+            'username' => env('REDIS_USERNAME'),                              // 登录用户名；Redis 6+ 支持账户系统
+            'password' => env('REDIS_PASSWORD'),                              // 登录密码；为空表示无密码
             'port' => env('REDIS_PORT', '6379'),                       // 端口号；默认 6379
             'database' => env('REDIS_CACHE_DB', '1'),                  // 缓存专用数据库编号；默认 1，与默认连接的 0 隔离
             'max_retries' => env('REDIS_MAX_RETRIES', 3),              // 命令失败时的最大重试次数；默认 3
