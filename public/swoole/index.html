@@ -1,0 +1,16 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Laravel-s 测试用例</title>
+</head>
+<body>
+    <div>
+        laravel-s 测试用例
+    </div>
+</body>
+</html>
+<script>
+    const ws = new WebSocket('ws://127.0.0.0:5200');
+    ws.onopen = ()=>{ws.send('hi server');}
+    ws.onmessage = (e)=>{console.log('收到：', e.data)}
+</script>

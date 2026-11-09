@@ -3,6 +3,7 @@
 use App\Http\Controllers\BloomFilterController;
 use App\Http\Controllers\CacheTestController;
 use App\Http\Controllers\RedisTestController;
+use App\Http\Controllers\SwooleTestController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -30,3 +31,16 @@ Route::prefix('bloom')->group(function () {
     Route::get('/count', [BloomFilterController::class, 'count']);         // 统计近似元素数量
     Route::delete('/clear', [BloomFilterController::class, 'clear']);       // 清空过滤器
 });
+
+// laravel-s 示例
+Route::get('/hello', function () {
+    return [
+        'msg' => 'hello laravel-s',
+        'time' => date('Y-m-d H:i:s'),
+    ];
+});
+
+Route::prefix('swoole')->group(function () {
+    Route::any('index', [SwooleTestController::class, 'index']);
+});
+
